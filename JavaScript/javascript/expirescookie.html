@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+    <script>
+        function WriteCookie(){
+            var now =new Date();
+            now.setMonth(now.getMonth()-1);
+            var cookievalue=escape(document.myform.customer.value) +";";
+            document.cookie="name" + cookievalue+"expires=" + now.toUTCS
+            document.write("setting cookies :"+ "name=" + cookievalue);
+        }
+        </script>
+        </head>
+        <body>
+            <form name="myform" action="">
+               enetr name:<input type="text" name="customer"/>
+
+                 <input type="button" value="Get Cookies" onclick="WriteCookie()">
+             </form>
+        </body>

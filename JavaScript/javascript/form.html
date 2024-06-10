@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation Example</title>
+<style>
+.error {
+  color: red;
+}
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="registrationForm" onsubmit="return validateForm()">
+  <label for="fname">First Name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <span id="fnameError" class="error"></span><br>
+
+  <label for="lname">Last Name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  <span id="lnameError" class="error"></span><br>
+
+  <label for="phone">Phone Number:</label><br>
+  <input type="text" id="phone" name="phone"><br>
+  <span id="phoneError" class="error"></span><br>
+
+  <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+  <span id="emailError" class="error"></span><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+function validateForm() {
+  var fname = document.getElementById("fname").value;
+  var lname = document.getElementById("lname").value;
+  var phone = document.getElementById("phone").value;
+  var email = document.getElementById("email").value;
+  var isValid = true;
+
+  var nameRegex = /^[A-Za-z]+$/; 
+  var phoneRegex = /^[0-9]+$/; 
+
+  document.getElementById("fnameError").innerHTML = "";
+  document.getElementById("lnameError").innerHTML = "";
+  document.getElementById("phoneError").innerHTML = "";
+  document.getElementById("emailError").innerHTML = "";
+
+  if (fname == "") {
+    document.getElementById("fnameError").innerHTML = "First name is required";
+    isValid = false;
+  } else if (!nameRegex.test(fname)) {
+    document.getElementById("fnameError").innerHTML = "Only alphabetic characters are allowed";
+    isValid = false;
+  }
+
+  if (lname == "") {
+    document.getElementById("lnameError").innerHTML = "Last name is required";
+    isValid = false;
+  } else if (!nameRegex.test(lname)) {
+    document.getElementById("lnameError").innerHTML = "Only alphabetic characters are allowed";
+    isValid = false;
+  }
+
+  if (phone == "") {
+    document.getElementById("phoneError").innerHTML = "Phone number is required";
+    isValid = false;
+  } else if (!phoneRegex.test(phone)) {
+    document.getElementById("phoneError").innerHTML = "Only numeric characters are allowed";
+    isValid = false;
+  }
+
+  if (email == "") {
+    document.getElementById("emailError").innerHTML = "Email is required";
+    isValid = false;
+  } else if (!/\S+@\S+\.\S+/.test(email)) {
+    document.getElementById("emailError").innerHTML = "Invalid email format";
+    isValid = false;
+  }
+
+  return isValid;
+}
+</script>
+
+</body>
+</html>
